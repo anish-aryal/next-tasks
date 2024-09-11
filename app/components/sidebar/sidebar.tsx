@@ -7,7 +7,7 @@ type SidebarProps = {
 };
 
 export default function Sidebar({ setActiveTask, activeTask }: SidebarProps) {
-  const tasks = ['Task 1', 'Task 2', 'Task 5'];
+  const tasks = ['Task 1', 'Task 2', 'Task 4'];
 
   return (
     <div className="sidebar bg-white border-r flex flex-col  p-4">
