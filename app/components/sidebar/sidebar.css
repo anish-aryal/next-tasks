@@ -1,0 +1,18 @@
+.sidebar {
+
+    display: flex;
+    width: 240px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 50px;
+    flex-shrink: 0;
+    align-self: stretch;
+    max-width: 240px;
+    border-right: 1px solid rgba(17, 158, 214, 0.20);
+}
+
+.activeButton{
+    border-radius: 2px;
+    background: linear-gradient(90deg, #1385E8 0%, #03CFC6 100%);
+}

@@ -1,0 +1,11 @@
+.searchbutton{
+    width: 300px;
+    height: 40px;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 2px;
+    padding-left: 10px;
+
+}
+.tableheading{
+    background: linear-gradient(90deg, rgba(19, 133, 232, 0.10) 0%, rgba(3, 207, 198, 0.10) 100%);
+}
