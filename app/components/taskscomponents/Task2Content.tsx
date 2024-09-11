@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import './task.css'
+import "./task.css";
 
+//typescript schema for the user object
 type User = {
   id: number;
   name: string;
@@ -10,15 +11,17 @@ type User = {
 
 const UserList = () => {
   const [users, setUsers] = useState([]); // Initial value as an empty array
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(true); //creating loading state
+  const [error, setError] = useState(""); //creating error state
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get("https://jsonplaceholder.typicode.com/users");
-        console.log(response.data)
-        setUsers(response.data);
+        const response = await axios.get(
+          "https://jsonplaceholder.typicode.com/users"
+        ); //making api call and getting response
+        console.log("response", response.data);
+        setUsers(response.data); //setting the response data in the users state
       } catch (err) {
         setError("Failed to fetch users.");
       } finally {
@@ -29,44 +32,32 @@ const UserList = () => {
     fetchUsers();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
   return (
     <div className="flex flex-col  gap-10">
       <div className="description">
-        <h2 className="text-2xl font-bold mb-1">Search Filter Component</h2>
-        <ul className="list-disc list-outside text-sm text-gray-500 text-justify">
-          <li>
-            Search Input: Add a text input for users to enter their search
-            query.
-          </li>
-          <li>
-            Filter List: Display a list of items that match the search query.
-          </li>
-          <li>Case Insensitive: Ensure the search is case insensitive.</li>
-        </ul>
+        <h2 className="text-2xl font-bold mb-1">Data Fetch API integration</h2>
       </div>
-
-      <div className="flex flex-col items-end gap-2">
-        <table className="w-full border-collapse border border-slate-300">
-          <thead>
-            <tr className="border text-left tableheading">
-              <th className="p-3">S.N.</th>
-              <th className="">Name</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((user: User, index) => (
-              <tr key={user.id}>
-                <td className="p-3">{index + 1}</td>
-                <td>{user.name}</td>
-                <td>{user.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="flex flex-wrap justify-center gap-6 p-4">
+        {users.map((user: User) => (
+          <div
+            key={user.id}
+            className="flex items-center p-4 userCard border rounded-lg shadow-md"
+          >
+            <div className="flex-1">
+              <h2 className="text-l font-bold">{user.name}</h2>
+              <p className="text-sm text-gray-600">{user.email}</p>
+            </div>
+            <div className="ml-4">
+              <img
+                src={`https://randomuser.me/api/portraits/women/${user.id}.jpg`}
+                alt={user.name}
+                className="w-14 h-14 rounded-full object-cover"
+              />
+            </div>
+          </div>
+        ))}
       </div>
     </div>
   );

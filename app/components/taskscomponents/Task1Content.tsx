@@ -21,19 +21,10 @@ export default function Task1Content() {
       item.category.toLowerCase().includes(input.toLowerCase())
   );
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-20">
       <div className="description">
       <h2 className="text-2xl font-bold mb-1">Search Filter Component</h2>
-        <ul className=" list-disc list-outside text-sm text-gray-500 text-justify">
-          <li>
-            Search Input: Add a text input for users to enter their search
-            query.
-          </li>
-          <li>
-            Filter List: Display a list of items that match the search query.
-          </li>
-          <li>Case Insensitive: Ensure the search is case insensitive.</li>
-        </ul>
+
       </div>
 
       <div className="flex flex-col items-end gap-2">
