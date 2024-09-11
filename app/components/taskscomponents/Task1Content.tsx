@@ -1,6 +1,4 @@
-// app/components/taskcomponent/Task1Content.tsx
-
-"use client"; // Ensures this is a client-side component
+"use client";
 import { useState } from "react";
 import './task.css'
 
@@ -33,7 +31,7 @@ export default function Task1Content() {
           className="searchbutton"
           placeholder="Search by Name or Category"
           value={input}
-          onChange={(e) => setInput(e.target.value)} // Update query state on input change
+          onChange={(e) => setInput(e.target.value)} // Update input state on input change
         />
         <table className=" w-full border-collapse border border-slate-300">
           <thead>

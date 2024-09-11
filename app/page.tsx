@@ -1,4 +1,3 @@
-// app/page.tsx (or the file where your Home component is located)
 "use client";
 import { useState } from "react";
 import Sidebar from "./components/sidebar/sidebar";

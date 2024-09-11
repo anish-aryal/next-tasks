@@ -1,7 +1,7 @@
-// app/api/login/route.ts
+
 import { NextRequest, NextResponse } from 'next/server';
 import { generateToken } from '@/app/utils/auth';
-// Mock user database
+
 const users = [
   { id: 1, username: 'username', password: 'password' }
 ];

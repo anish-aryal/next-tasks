@@ -3,7 +3,6 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./task.css";
-import { User, verifyToken } from "@/app/utils/auth";
 
 export default function Task3Content() {
   const [username, setUsername] = useState("username");
