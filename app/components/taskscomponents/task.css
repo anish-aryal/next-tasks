@@ -14,3 +14,25 @@
 .userCard {
     background: linear-gradient(90deg, rgba(19, 133, 232, 0.10) 0%, rgba(3, 207, 198, 0.10) 100%);
 }
+
+.logincard {
+    border: 1px solid rgba(17, 158, 214, 0.50);
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(189, 186, 228, 0.50);
+}
+
+.loginbtn {
+    display: flex;
+
+    padding: 13px 0px 12px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #1385E8 0%, #03CFC6 100%);
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
