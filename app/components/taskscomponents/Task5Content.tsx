@@ -1,13 +1,25 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
-import "./task.css"
+import { useEffect, useState } from "react";
+import "./task.css";
+import { User, verifyToken } from "@/app/utils/auth";
 
 export default function Task3Content() {
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
+  const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
+
+
   const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+
+        setIsUserLoggedIn(true);
+    }
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -19,13 +31,26 @@ export default function Task3Content() {
 
     if (res.ok) {
       const { token } = await res.json();
-      // Store the token in memory
       localStorage.setItem("token", token);
       router.push("/dashboard");
     } else {
       alert("Login failed");
     }
   };
+
+  if (isUserLoggedIn) {
+    return (
+      <div className="flex flex-col h-full items-center justify-center">
+        <h1 className="text-2xl font-semibold mb-4">You are already logged in</h1>
+        <button
+          className="loginbtn hover:scale-y-105 text-white w-1/3"
+          onClick={() => router.push("/dashboard")}
+        >
+          Take me to my Dashboard
+        </button>
+      </div>
+    );
+  }
 
   return (
     <div className="flex flex-col h-full items-center justify-center bg-white">
@@ -84,7 +109,6 @@ export default function Task3Content() {
               Remember me ?
             </label>
           </div>
-
           <div>
             <button
               type="submit"

@@ -4,7 +4,7 @@ import { useState } from "react";
 import Sidebar from "./components/sidebar/sidebar";
 import Task1Content from "./components/taskscomponents/Task1Content";
 import Task2Content from "./components/taskscomponents/Task2Content";
-import Task3Content from "./components/taskscomponents/Task3Content";
+import Task3Content from "./components/taskscomponents/Task5Content";
 import "./home.css";
 
 export default function Home() {
@@ -16,7 +16,7 @@ export default function Home() {
         return <Task1Content />;
       case "Task 2":
         return <Task2Content />;
-      case "Task 3":
+      case "Task 5":
         return <Task3Content />;
       default:
         return null;
