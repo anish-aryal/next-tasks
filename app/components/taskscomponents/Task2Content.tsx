@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Image from "next/image";
 import axios from "axios";
 import "./task.css";
 
@@ -34,6 +35,8 @@ const UserList = () => {
 
   if (error) return <div>{error}</div>;
 
+  if (loading) return <div>Loading...</div>;
+
   return (
     <div className="flex flex-col  gap-10">
       <div className="description">
@@ -50,10 +53,12 @@ const UserList = () => {
               <p className="text-sm text-gray-600">{user.email}</p>
             </div>
             <div className="ml-4">
-              <img
+              <Image
                 src={`https://randomuser.me/api/portraits/women/${user.id}.jpg`}
                 alt={user.name}
-                className="w-14 h-14 rounded-full object-cover"
+                width={56} // corresponding to w-14
+                height={56} // corresponding to h-14
+                className="rounded-full object-cover"
               />
             </div>
           </div>

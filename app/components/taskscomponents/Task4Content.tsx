@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./task.css";
 import { getLoggedInUser } from "@/app/utils/auth";
+import Image from "next/image";
 
 type User = {
   id: number;
@@ -51,7 +52,7 @@ export default function Task4Content() {
   if (isUserLoggedIn) {
     return (
       <div className="flex gap-24 flex-col h-full items-center mt-20">
-        <img src="/vrit-tech-logo.jpg" alt="VritTech Logo" className="h-16" />
+        <Image src="/vrit-tech-logo.jpg" alt="VritTech Logo" width={200} height={200}/>
         <div className="content flex flex-col items-start justify-center">
           <p className="mb-3 text-l text-blue-600 italic">{loggedInUser? loggedInUser.name: "Guest"},</p>
           <h1 className="text-2xl font-semibold mb-4">
@@ -72,7 +73,7 @@ export default function Task4Content() {
     <div className="flex flex-col h-full items-center justify-center bg-white">
       <div className="logincard flex flex-col gap-14 max-w-md px-10 pt-14 pb-24 w-full border-1">
         <div className="flex justify-center ">
-          <img src="/vrit-tech-logo.jpg" alt="VritTech Logo" className="h-16" />
+          <Image src="/vrit-tech-logo.jpg" alt="VritTech Logo" width={100} height={100} />
         </div>
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-1">
