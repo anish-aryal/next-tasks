@@ -18,7 +18,7 @@ const UserList = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const response = await axios.get(
+        const response = await axios.get(   //axios request to the api to fetch the data of users
           "https://jsonplaceholder.typicode.com/users"
         ); //making api call and getting response
         console.log("response", response.data);
@@ -33,9 +33,9 @@ const UserList = () => {
     fetchUsers();
   }, []);
 
-  if (error) return <div>{error}</div>;
+  if (error) return <div>{error}</div>; //checking if there is an error
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div>Loading...</div>; // checking if the data is loading
 
   return (
     <div className="flex flex-col  gap-10">

@@ -13,6 +13,8 @@ type User = {
 };
 
 export default function Task4Content() {
+
+  //initiaaliing required states
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -21,7 +23,7 @@ export default function Task4Content() {
   const router = useRouter();
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token"); //checking if the user is already logged in
     if (token) {
       setIsUserLoggedIn(true);
     }
@@ -32,9 +34,9 @@ export default function Task4Content() {
     }
   }, []);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => { //submitting the form
     e.preventDefault();
-    const res = await fetch("/api/login", {
+    const res = await fetch("/api/login", { //making a post request to api/login for generating user token for loggedin user
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ username, password }),
@@ -43,7 +45,7 @@ export default function Task4Content() {
     if (res.ok) {
       const { token } = await res.json();
       localStorage.setItem("token", token);
-      router.push("/dashboard");
+      router.push("/dashboard");  // navigating them to the dashboard
     } else {
       alert("Login failed");
     }
@@ -78,6 +80,7 @@ export default function Task4Content() {
         <form className="space-y-6" onSubmit={handleSubmit}>
           <div className="flex flex-col gap-1">
             <label
+
               htmlFor="username"
               className="text-sm font-medium text-gray-700"
             >

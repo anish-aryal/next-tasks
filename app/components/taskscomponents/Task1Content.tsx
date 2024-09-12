@@ -4,6 +4,7 @@ import './task.css'
 
 export default function Task1Content() {
   const [input, setInput] = useState("");
+//creating a array for searching into
   const items = [
     { name: "Apple", category: "Fruit" },
     { name: "Banana", category: "Fruit" },
@@ -13,11 +14,14 @@ export default function Task1Content() {
     { name: "Fig", category: "Fruit" },
     { name: "Grape", category: "Berry" },
   ];
+
+  //serarch query or conditions defined
   const filteredItems = items.filter(
     (item) =>
       item.name.toLowerCase().includes(input.toLowerCase()) ||
       item.category.toLowerCase().includes(input.toLowerCase())
   );
+  
   return (
     <div className="flex flex-col gap-20">
       <div className="description">
