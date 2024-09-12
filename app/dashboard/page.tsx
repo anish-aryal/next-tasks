@@ -2,19 +2,33 @@
 
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from "react";
+import { getLoggedInUser } from '../utils/auth';
+
+type User = {
+    id: number;
+    username: string;
+    name: string;
+};
 
 export default function Dashboard() {
     const [isLoading, setIsLoading] = useState(true);
+    const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
     const router = useRouter();
 
 
     useEffect(() => {
       const token = localStorage.getItem('token');
+      const user = getLoggedInUser();
+        if (user){
+            setLoggedInUser(user);
+        }
       if (!token) {
         router.push('/');
       } else {
         setIsLoading(false);
       }
+
+
     }, [router]);
 
     if (isLoading) {
@@ -27,7 +41,7 @@ export default function Dashboard() {
         <div className="max-w-7xl mx-auto flex justify-between items-center">
         <img src="/vrit-tech-logo.jpg" alt="VritTech Logo" onClick={() => router.push('/')} className="h-12 cursor-pointer" />
           <div className="flex items-center space-x-4">
-            <span className="text-gray-700">Welcome, User</span>
+            <span className="text-gray-700">Welcome, {loggedInUser? loggedInUser.name: "Guest"}</span>
             <button className="bg-red-500 text-white px-4 py-2 rounded"onClick={() => {
         localStorage.removeItem('token');
         router.push('/');

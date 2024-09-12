@@ -3,20 +3,31 @@
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import "./task.css";
+import { getLoggedInUser } from "@/app/utils/auth";
+
+type User = {
+  id: number;
+  username: string;
+  name: string;
+};
 
 export default function Task4Content() {
   const [username, setUsername] = useState("username");
   const [password, setPassword] = useState("password");
   const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
-
+  const [loggedInUser, setLoggedInUser] = useState<User | null>(null);
 
   const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
+      setIsUserLoggedIn(true);
+    }
 
-        setIsUserLoggedIn(true);
+    const user = getLoggedInUser();
+    if (user) {
+      setLoggedInUser(user);
     }
   }, []);
 
@@ -39,14 +50,20 @@ export default function Task4Content() {
 
   if (isUserLoggedIn) {
     return (
-      <div className="flex flex-col h-full items-center justify-center">
-        <h1 className="text-2xl font-semibold mb-4">You are already logged in</h1>
-        <button
-          className="loginbtn hover:scale-y-105 text-white w-1/3"
-          onClick={() => router.push("/dashboard")}
-        >
-          Take me to my Dashboard
-        </button>
+      <div className="flex gap-24 flex-col h-full items-center mt-20">
+        <img src="/vrit-tech-logo.jpg" alt="VritTech Logo" className="h-16" />
+        <div className="content flex flex-col items-start justify-center">
+          <p className="mb-3 text-l text-blue-600 italic">{loggedInUser? loggedInUser.name: "Guest"},</p>
+          <h1 className="text-2xl font-semibold mb-4">
+            You are already logged in
+          </h1>
+          <button
+            className="loginbtn hover:scale-y-105 text-white w-full"
+            onClick={() => router.push("/dashboard")}
+          >
+            Take me to my Dashboard
+          </button>
+        </div>
       </div>
     );
   }

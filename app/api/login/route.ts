@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { generateToken } from '@/app/utils/auth';
 
 const users = [
-  { id: 1, username: 'username', password: 'password' }
+  { id: 1, username: 'username', password: 'password', name: 'Anish Aryal' }
 ];
 
 export async function POST(request: NextRequest) {
@@ -14,7 +14,7 @@ export async function POST(request: NextRequest) {
   const user = users.find(u => u.username === username && u.password === password);
 
   if (user) {
-    const token = generateToken({ id: user.id, username: user.username });
+    const token = generateToken({ id: user.id, username: user.username, name: user.name });
     return NextResponse.json({ success: true, token });
   } else {
     return NextResponse.json({ error: 'Invalid credentials' }, { status: 401 });
