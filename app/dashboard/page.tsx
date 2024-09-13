@@ -23,7 +23,7 @@ export default function Dashboard() {
             setLoggedInUser(user);
         }
       if (!token) {
-        router.push('/');
+        router.push('/login');
       } else {
         setIsLoading(false);
       }

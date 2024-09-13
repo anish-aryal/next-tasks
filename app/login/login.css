@@ -1,0 +1,21 @@
+.logincard {
+    border: 1px solid rgba(17, 158, 214, 0.50);
+    background: #FFF;
+    box-shadow: 0px 0px 4px 0px rgba(189, 186, 228, 0.50);
+    margin-top: 100px;
+}
+
+.loginbtn {
+    display: flex;
+    padding: 13px 0px 12px 0px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 2px;
+    background: linear-gradient(90deg, #1385E8 0%, #03CFC6 100%);
+    color: #FFF;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    cursor: pointer;
+}
